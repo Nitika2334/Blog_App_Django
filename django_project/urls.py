@@ -15,8 +15,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-]
+    path('blog/', include(blog.urls)),   
+    #call : localhost:8000/blog/home/ - it will cut the part here that matches here will send the rest of the part to the url of the app [i.e. - home/]
+    # [why / ?] - because we will not keep the forward slash it will redirect to the path without the forward slash from the project
+    #we can leave it empty to make it the default route for the 8000 port or local host 
+] 
